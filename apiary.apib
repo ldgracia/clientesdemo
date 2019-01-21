@@ -1,0 +1,82 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Clientes NMP
+
+Esta api permite crear nuevos clientes para el corporativo NMP
+
+## Clientes Collection [/clientes]
+
+### List All Clientes [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "nombre": "Luis",
+                "apellido": "Garcia",
+                "direccion": [
+                    {
+                        "calle": "Prol Pto Unico",
+                        "numero": 123
+                    }, {
+                        "calle": "Cerrada Unicanal",
+                        "numero": 2969
+                    }
+                ],
+                "telefono": [
+                    {
+                        "numero": "+6655887744",
+                        "descripcion": "Telefono de casa"
+                    }, {
+                        "calle": "+558899663322",
+                        "descripcion": "Telefono de trabajo"
+                    }
+                ]
+            }
+        ]
+
+### Create a New Client [POST]
+
+Para crear un nuevo cliente esta api recibe un json de entrada y retornara el numero de cliente generado.
+
++ Request (application/json)
+
+        {
+                "nombre": "Luis",
+                "apellido": "Garcia",
+                "rfc":"RTYU990033GTDRRP06",
+                "edad":25, 
+                "estadoCivil":"soltero",
+                "direccion": [
+                    {
+                        "calle": "Prol Pto Unico",
+                        "numero": 123
+                    }, {
+                        "calle": "Cerrada Unicanal",
+                        "numero": 2969
+                    }
+                ],
+                "telefono": [
+                    {
+                        "numero": "+6655887744",
+                        "descripcion": "Telefono de casa"
+                    }, {
+                        "calle": "+558899663322",
+                        "descripcion": "Telefono de trabajo"
+                    }
+                ]
+            }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /clientes/2
+
+    + Body
+
+            {
+                "cliente": "CLI00393484HH?",
+                "status": "OK"
+            }
